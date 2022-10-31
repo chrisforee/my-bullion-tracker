@@ -71,32 +71,41 @@ class Bullion:
     @classmethod
     def update_one(cls, data):
         query = "UPDATE bullion "
-        query += "SET location = %(location)s, context = %(context)s, date_of_sighting = %(date_of_sighting)s, number_of_sas = %(number_of_sas)s "
+        query += "SET description = %(description)s, amount = %(amount)s, type = %(type)s, weight = %(weight)s, date_purchased = %(date_purchased)s, location_held = %(location_held)s "
         query += "WHERE id = %(id)s;"
 
         return connectToMySQL(DATABASE).query_db(query, data)
 
     @classmethod
     def delete_one(cls, data):
-        query = "DELETE FROM sightings "
+        query = "DELETE FROM bullion "
         query += "WHERE id = %(id)s;"
         return connectToMySQL(DATABASE).query_db(query, data)
 
     # Static method to validate for empty inputs in html form
     @staticmethod
-    def validate_sighting(data):
+    def validate_bullion(data):
         is_valid = True
         # First set of validations for empty fields
-        if data['location'] == "":
-            flash("Location must not be empty", "error_sighting_location")
+        if data['description'] == "":
+            flash("Description required", "error_bullion_description")
             is_valid = False
-        if data['context'] == "":
-            flash("What Happened must not be empty", "error_sighting_context")
+        if data['amount'] == "":
+            flash("Amount required", "error_bullion_amount")
             is_valid = False
-        if data['date_of_sighting'] == "":
-            flash("Date of sighting must not be empty", "error_sighting_date_of_sighting")
+        if data['type'] == "":
+            flash("Type required", "error_bullion_type")
             is_valid = False
-        if data['number_of_sas'] == "":
-            flash("Number of sasquatch(es) must not be empty", "error_sighting_number_of_sas")
+        if data['weight'] == "":
+            flash("Weight required", "error_bullion_weight")
             is_valid = False
+        if data['date_purchased'] == "":
+            flash("Date purchased required", "error_bullion_date_purchased")
+            is_valid = False
+        if data['purchased_from'] == "":
+            flash("Purchased from required", "error_bullion_purchased_from")
+            is_valid = False
+        if data['location_held'] == "":
+            flash("Location held required", "error_bullion_location_held")
+            is_valid = False                        
         return is_valid            
