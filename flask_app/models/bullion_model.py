@@ -20,8 +20,8 @@ class Bullion:
     @classmethod
     def get_all_with_users(cls): #<============== not retreiving anything from routes so no 'data' needed
         query = "SELECT * "
-        query += "FROM bullion "
-        query += "JOIN users ON bullion.user_id = users.id;"
+        query += "FROM bullions "
+        query += "JOIN users ON bullions.user_id = users.id;"
         # This code snippet will create an instance for each recipe and inside each recipe will be an instance of the user to be displayed on the template
         results = connectToMySQL(DATABASE).query_db(query) #<=========== Results will provide data from db
         list_bullions = [] #<========= create list to provide instances of sightings
@@ -41,7 +41,7 @@ class Bullion:
     #Class method to create an INSERT query to place a sighting into the database
     @classmethod
     def create(cls, data):
-        query = "INSERT INTO bullion( description, amount, type, weight, date_purchased, purchased_from, location_held, user_id )"
+        query = "INSERT INTO bullions( description, amount, type, weight, date_purchased, purchased_from, location_held, user_id )"
         query += "VALUES ( %(description)s, %(amount)s, %(type)s, %(weight)s, %(date_purchased)s, %(purchased_from)s, %(location_held)s, %(user_id)s);"
         return connectToMySQL(DATABASE).query_db(query, data) #<=========================== Will send back id of the created/inserted recipe
 
@@ -49,9 +49,9 @@ class Bullion:
     @classmethod
     def get_one_with_user(cls, data):
         query = "SELECT * "
-        query += "FROM bullion "
-        query += "JOIN users ON bullion.user_id = users.id "
-        query += "WHERE bullion.id = %(id)s;"
+        query += "FROM bullions "
+        query += "JOIN users ON bullions.user_id = users.id "
+        query += "WHERE bullions.id = %(id)s;"
         
         result = connectToMySQL(DATABASE).query_db(query, data)
         if len(result) > 0: #<=====validating a result was returned
@@ -70,7 +70,7 @@ class Bullion:
     # Class method to create an UPDATE query to update sightings
     @classmethod
     def update_one(cls, data):
-        query = "UPDATE bullion "
+        query = "UPDATE bullions "
         query += "SET description = %(description)s, amount = %(amount)s, type = %(type)s, weight = %(weight)s, date_purchased = %(date_purchased)s, location_held = %(location_held)s "
         query += "WHERE id = %(id)s;"
 
