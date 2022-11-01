@@ -1,6 +1,6 @@
 from flask_app import app
 from flask import render_template, request, redirect, flash, session
-from flask_app.models.user_model import User
+from flask_app.models.bullion_model import Bullion
 
 @app.route('/dashboard')
 def display_bullions():

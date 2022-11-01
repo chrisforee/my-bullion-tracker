@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light border-bottom p-3">
+        <a class="navbar-brand" href="/">
+            <img src="https://img.freepik.com/premium-vector/realistic-gold-bars-bullion-treasure-illustration_287964-432.jpg?w=2000" width="100" height="100" class="d-inline-block align-center" alt="gold-bar">
+           <h1 class="font-weight-bold d-inline-block">My Bullion Tracker</h1>
+        </a>
+      </nav>
+    <div>
+        <h1>
+        {{session['first_name']}} bullion tracker dahsboard
+        </h1>
+    </div>
+    <p>
+        <a href="bullion/new">
+            New bullion entry
+        </a>
+    </p>
+    <p>
+        <a href="/user/logout">
+            Logout
+        </a>
+    </p>
+    <div>
+        Current bullion:
+    </div>
+    <table>
+        {% for bullion in list_bullions: %}
+    <tr>
+        <td>
+            {{bullion.description}}
+        </td>
+        <td>
+            {{bullion.amount}}
+        </td>
+        <td>
+            {{bullion.type}}
+        </td>
+        <td>
+            <a href="/bullion/{{bullion.id}}">
+                View
+            </a>
+            {% if session ['user_id'] == bullion.user.id : %}
+            |
+            <a href="/bullion/{{bullion.id}}/update">
+                Edit
+            </a>
+            |
+            <a href="/bullion/{{bullion.id}}/delete">
+                Delete
+            </a>
+            {% endif %}
+
+        </td>
+    </tr>
+        {% endfor %}
+        
+    </table>
+</p>
+</body>
+</html>

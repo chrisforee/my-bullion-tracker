@@ -24,7 +24,7 @@ class Bullion:
         query += "JOIN users ON bullion.user_id = users.id;"
         # This code snippet will create an instance for each recipe and inside each recipe will be an instance of the user to be displayed on the template
         results = connectToMySQL(DATABASE).query_db(query) #<=========== Results will provide data from db
-        list_sightings = [] #<========= create list to provide instances of sightings
+        list_bullions = [] #<========= create list to provide instances of sightings
         for row in results: #<============== iterate through the rows in the data returned 
             current_bullion = cls(row) #<========= create the recipe instance
             user_data = { #<====== create the user data from the above query
