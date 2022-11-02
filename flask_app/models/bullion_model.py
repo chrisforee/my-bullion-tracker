@@ -35,7 +35,7 @@ class Bullion:
             }
             current_user = User(user_data) #<======instance of user is created from User class
             current_bullion.user = current_user #<=======combining both instances from recipe and user
-            list_bullions.append(current_sighting) #<======= append list of sightings 
+            list_bullions.append(current_bullion) #<======= append list of sightings 
         return list_bullions #<===== list to be sent back to controller
 
     #Class method to create an INSERT query to place a sighting into the database

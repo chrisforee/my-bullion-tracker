@@ -4,7 +4,11 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>New Entry</title>
+    <link rel="shortcut icon" href="../static/imgs/favicon.ico" type="image/x-icon">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" 
+    integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <title>Bullion Tracker</title>
 </head>
 <body>
     <nav class="navbar navbar-light bg-light border-bottom p-3">
@@ -12,10 +16,12 @@
             <img src="https://img.freepik.com/premium-vector/realistic-gold-bars-bullion-treasure-illustration_287964-432.jpg?w=2000" width="100" height="100" class="d-inline-block align-center" alt="gold-bar">
             <h1 class="font-weight-bold d-inline-block">My Bullion Tracker</h1>
         </a>
-    </nav>  
+    </nav>
+</head>
+<body>
     <div>
         <h1>
-        New Bullion Entry for: {{session['first_name']}}
+        Edit Bullion Entry: {{session['first_name']}}
         </h1>
     </div>
     <p>
@@ -23,14 +29,13 @@
             Dashboard
         </a>
     </p>
-    <p> 
+    <p>
         <a href="/user/logout">
             Logout
         </a>
+        <h1>Edit this bullion entry</h1>
     </p>
-    <h1>Create a new bullion entry</h1>
-    </p>
-    <form method="POST" action="/bullion/create">
+    <form method="POST" action="/sighting/update/{{current_bullion.id}}">
         <div>
             <label>
                 Description:
@@ -94,7 +99,7 @@
                 {{message}}
             {% endfor %}
         </div>
-        <button>Submit Entry</button>
+        <button>Update Entry</button>
     </form>
 </body>
 </html>
