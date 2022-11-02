@@ -35,12 +35,12 @@
         </a>
         <h1>Edit this bullion entry</h1>
     </p>
-    <form method="POST" action="/sighting/update/{{current_bullion.id}}">
+    <form method="POST" action="/bullion/update/{{current_bullion.id}}">
         <div>
             <label>
                 Description:
             </label>
-            <input type="text" name="description"></textarea> 
+            <input type="text" name="description" value="{{current_bullion.description}}"></textarea> 
             {% for message in get_flashed_messages(category_filter = ['error_bullion_description']) %}
                 {{message}}
             {% endfor %}
@@ -49,7 +49,7 @@
             <label>
                 Amount:
             </label>
-            <input type="number" name="amount"></>
+            <input type="number" name="amount" value="{{current_bullion.amount}}"></>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_amount']) %}
                 {{message}}
             {% endfor %}
@@ -58,7 +58,7 @@
             <label>
                 Type:
             </label>
-            <input type="text" name="type"></textarea>
+            <input type="text" name="type" value="{{current_bullion.type}}"></textarea>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_type']) %}
                 {{message}}
             {% endfor %}
@@ -67,7 +67,7 @@
             <label>
                 Weight:
             </label>
-            <input type="number" name="weight"></textarea>
+            <input type="number" name="weight" value="{{current_bullion.weight}}"></textarea>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_weight']) %}
                 {{message}}
             {% endfor %}
@@ -76,7 +76,7 @@
             <label>
                 Date Purchased:
             </label>
-            <input type="date" name="date_purchased"></textarea>
+            <input type="date" name="date_purchased" value="{{current_bullion.date_purchased}}"></textarea>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_date_purchased']) %}
                 {{message}}
             {% endfor %}
@@ -85,7 +85,7 @@
             <label>
                 Purchased from:
             </label>
-            <input type="text" name="purchased_from"></textarea>
+            <input type="text" name="purchased_from" value="{{current_bullion.purchased_from}}"></textarea>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_purchased_from']) %}
                 {{message}}
             {% endfor %}
@@ -94,7 +94,7 @@
             <label>
                 Location held:
             </label>
-            <input type="text" name="location_held"></textarea>
+            <input type="text" name="location_held" value="{{current_bullion.location_held}}"></textarea>
             {% for message in get_flashed_messages(category_filter = ['error_bullion_location_held']) %}
                 {{message}}
             {% endfor %}
