@@ -22,6 +22,43 @@
         Tracker dashboard for : {{session['first_name']}}
         </h1>
     </div>
+    <table>
+        {% for bullion in list_bullions: %}
+        <tr>
+            <th>Description</th>
+            <th>Amount</th>
+            <th>Type</th>
+            <th>Weight in oz</th>
+            <th>Date Purchased</th>
+            <th>Purchased From</th>
+            <th>Location Held</th>
+        </tr>
+        <tr>
+            <td>{{bullion.description}}</td>
+            <td>{{bullion.amount}}</td>
+            <td>{{bullion.type}}</td>
+            <td>{{bullion.weight}}</td>
+            <td>{{bullion.date_purchased}}</td>
+            <td>{{bullion.purchased_from}}</td>
+            <td>{{bullion.location_held}}</td>
+            <td>
+                <a href="/bullion/{{bullion.id}}">
+                    View
+                </a>
+                {% if session ['user_id'] == bullion.user.id : %}
+                |
+                <a href="/bullion/{{bullion.id}}/update">
+                    Edit
+                </a>
+                |
+                <a href="/bullion/{{bullion.id}}/delete">
+                    Delete
+                </a>
+                {% endif %}
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
     <div>
         <a href="bullion/new">
             New bullion entry
@@ -36,35 +73,21 @@
         Current bullion:
     </div>
     <table>
-        {% for bullion in list_bullions: %}
+        
     <tr>
         <td>
-            {{bullion.description}}
+            
         </td>
         <td>
-            {{bullion.amount}}
+            
         </td>
         <td>
-            {{bullion.type}}
+            
         </td>
         <td>
-            <a href="/bullion/{{bullion.id}}">
-                View
-            </a>
-            {% if session ['user_id'] == bullion.user.id : %}
-            |
-            <a href="/bullion/{{bullion.id}}/update">
-                Edit
-            </a>
-            |
-            <a href="/bullion/{{bullion.id}}/delete">
-                Delete
-            </a>
-            {% endif %}
-
         </td>
     </tr>
-        {% endfor %}
+        
         
     </table>
 </p>

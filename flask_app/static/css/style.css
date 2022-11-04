@@ -1,0 +1,20 @@
+#promo-div{
+    position: relative;
+    background-image: url('https://static.seekingalpha.com/cdn/s3/uploads/getty_images/1348848980/image_1348848980.jpg?io=getty-c-w640');
+    background-size: cover;
+}
+#promo-div::before{
+    content: "";
+    top: 0px;
+    right: 0px;
+    bottom: 0px;
+    left: 0px;
+    position: absolute;
+    background-color: rgba(255,255,204,.80);
+}
+#promo-text{
+    position: relative;
+}
+#bullion-imgs{
+    height: 300px;
+}
