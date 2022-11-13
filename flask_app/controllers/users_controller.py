@@ -45,6 +45,7 @@ def process_login():
             return redirect('/')
         # Setting session values: these can change depending on wireframe
         session['first_name'] = current_user.first_name #<====== creating session first_name from current_user instance (user from db)
+        session['last_name'] = current_user.last_name #creating session last_name from current_user instance (user from db)
         session['email'] =  current_user.email#<======== creating session email from from current_user instance(user from db)
         session['user_id'] = current_user.id #<============ creating session user_id from current_user instance(user from db)
         return redirect('/dashboard') #<============= If all validation passes - send user to sightings page
